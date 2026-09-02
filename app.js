@@ -89,7 +89,7 @@ function skills() {
 
 function projects() {
   const portfolios = [
-    ["Front End Web Developer Portfolio", "Front End Web Developer Portfolio", "https://qms85.github.io/v1-CLI-Terminal-Portfolio/"],
+    ["Front End Web Developer Portfolio", "Front End Web Developer Portfolio", "https://qms85.github.io/MyPortfolio/"],
     ["v1 CLI Terminal Theme", "Front End Web Developer Portfolio", "https://qms85.github.io/v1-CLI-Terminal-Portfolio/"],
     ["v1.2 CLI Terminal Theme", "Front End Web Developer Portfolio", "https://qms85.github.io/_v1.2-CLI-Terminal-Front-End-Web-Developer-Portfolio/"]
   ];
