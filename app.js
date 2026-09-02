@@ -79,7 +79,7 @@ function projects() {
     ["Front End Web Developer Portfolio", "Front End Web Developer Portfolio", "https://qms85.github.io/v1-CLI-Terminal-Portfolio/"],
     ["v1 CLI Terminal Theme", "Front End Web Developer Portfolio", "https://qms85.github.io/v1-CLI-Terminal-Portfolio/"],
     ["v1.2 CLI Terminal Theme", "Front End Web Developer Portfolio", "https://qms85.github.io/_v1.2-CLI-Terminal-Front-End-Web-Developer-Portfolio/"]
-  
+  ];
   const featured = [
     ["Gem-Jumper", "Interactive Platform Game", "https://gem-jumper-f4f91f18.base44.app/"],
     ["Funky Snake Game", "Retro Style Game", "https://qms85.github.io/SnakeGame2025/"],
