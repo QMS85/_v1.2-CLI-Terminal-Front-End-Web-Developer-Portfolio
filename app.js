@@ -1,6 +1,8 @@
 /* CLI Terminal Portfolio — plain JavaScript */
 const cvUrl = "UpdatedCVOfJPeters.pdf";
 const commandNames = ["help", "bio", "skills", "projects", "certs", "contact", "github", "history", "download cv", "clear"];
+
+// DOM Element Validation
 const output = document.getElementById("terminalOutput");
 const input = document.getElementById("terminalInput");
 const form = document.getElementById("terminalForm");
@@ -11,6 +13,13 @@ const toast = document.getElementById("toast");
 const themeButton = document.getElementById("themeButton");
 const themeIcon = document.getElementById("themeIcon");
 const themeLabel = document.getElementById("themeLabel");
+const clearButton = document.getElementById("clearButton");
+
+// Validate critical elements exist
+if (!output || !input || !form || !toast || !dateTime || !timezone || !sessionTimezone || !themeButton || !themeIcon || !themeLabel) {
+  console.error("Critical DOM elements missing!");
+  throw new Error("Required terminal elements not found in HTML");
+}
 
 let commandHistory = readStorage("terminalHistory", []);
 let historyIndex = -1;
@@ -27,7 +36,11 @@ function readStorage(key, fallback) {
 }
 
 function writeStorage(key, value) {
-  try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* Storage can be unavailable in private browsing. */ }
+  try { 
+    localStorage.setItem(key, JSON.stringify(value)); 
+  } catch { 
+    /* Storage can be unavailable in private browsing. */ 
+  }
 }
 
 function escapeHtml(value) {
@@ -101,8 +114,10 @@ function projects() {
     ["Password Generator", "https://qms85.github.io/Password-Generator/"],
     ["Simple Calculator", "https://qms85.github.io/GitHubCalculator/"]
   ];
-  const list = (items, start = 1, detailed = true) => `<ol class="project-list" start="${start}">${items.map(([name, description, href], index) => `<li><span class="project-number">${String(index + start).padStart(2, "0")}</span>${link(href, detailed && description ? `${name} — ${description}` : name)}</li>`).join("")}</ol>`;
-  return card("PORTFOLIO PROJECTS", `<h3>Portfolio Websites'</h3>${list(portfolios)}<h3>Featured Projects</h3>${list(featured)}<h3>Figma Design Implementation</h3>${list(figma, 5, false)}<h3>Additional Projects</h3>${list(additional, 11, false)}<p>${link("https://github.com/QMS85?tab=repositories", "View all repositories on GitHub")}</p>`, "pink");
+  
+  const list = (items, start = 1, detailed = true) => `<ol class="project-list" start="${start}">${items.map(([name, description, href], index) => `<li><span class="project-number">${String(index + start)}</span>${link(href, name)}${detailed ? `<br><small>${description}</small>` : ""}</li>`).join("")}</ol>`;
+  
+  return card("PORTFOLIO PROJECTS", `<h3>Portfolio Websites</h3>${list(portfolios)}<h3>Featured Projects</h3>${list(featured)}<h3>Figma Design Implementation</h3>${list(figma, 5, false)}<h3>Additional Projects</h3>${list(additional, 11, false)}`);
 }
 
 function certs() {
@@ -112,7 +127,7 @@ function certs() {
     ["Front End Development Libraries", "https://www.freecodecamp.org/certification/Jonathan_Peters/front-end-development-libraries"],
     ["Data Visualization with D3.js", "https://www.freecodecamp.org/certification/Jonathan_Peters/data-visualization"]
   ];
-  return card("CERTIFICATIONS & ACHIEVEMENTS", `<p>All Certifications From freeCodeCamp.</p>${certifications.map(([name, href]) => `<div class="cert-row"><span class="cert-mark">OK</span>${link(href, name)}</div>`).join("")}<h3>In Progress</h3><p><span class="cert-mark">..</span> Backend Development with Node.js & Express</p><p><span class="cert-mark">..</span> Relational Database Design</p><p><em>Continuous learning is key to staying current in tech.</em></p>`);
+  return card("CERTIFICATIONS & ACHIEVEMENTS", `<p>All Certifications From freeCodeCamp.</p>${certifications.map(([name, href]) => `<div class="cert-row"><span class="cert-mark">✓</span>${link(href, name)}</div>`).join("")}`);
 }
 
 function contact() {
@@ -120,24 +135,24 @@ function contact() {
     <h3>Direct Contact</h3><p>Email: ${link("mailto:jonathanpeters051@gmail.com", "jonathanpeters051@gmail.com")}</p>
     <h3>Professional Networks</h3><p>${link("https://linkedin.com/in/2jonathanpeters", "LinkedIn Profile")}</p><p>${link("https://github.com/QMS85", "GitHub Profile")}</p>
     <h3>Social Media</h3><p>${link("https://twitter.com/DJJonnas85", "X / Twitter")}</p><p>${link("https://facebook.com/2jonathanpeters", "Facebook")}</p>
-    <h3>Open to</h3><ul><li>Freelance Web Development Projects</li><li>Contract Frontend Development Work</li><li>Full-time Developer Positions</li><li>Collaboration & Partnership Opportunities</li><li>Technical Consultations</li></ul>
+    <h3>Open to</h3><ul><li>Freelance Web Development Projects</li><li>Contract Frontend Development Work</li><li>Full-time Developer Positions</li><li>Collaboration & Partnership Opportunities</li></ul>
   `, "green");
 }
 
 function help() {
-  return card("AVAILABLE COMMANDS", `<h3>Navigation</h3><ul>${["bio — View developer profile & background", "skills — Technical stack and expertise", "projects — Highlighted portfolio projects", "certs — Professional certifications", "contact — Contact details & social links", "github — Real-time GitHub statistics"].map((item) => `<li>${item}</li>`).join("")}</ul><h3>Utilities</h3><ul><li>history — View command history</li><li>download cv — Download CV/Resume PDF</li><li>clear — Clear terminal screen</li></ul><h3>Keyboard Shortcuts</h3><ul><li>UP / DOWN — Navigate command history</li><li>TAB — Auto-complete command</li><li>ENTER — Execute command</li></ul>`);
+  return card("AVAILABLE COMMANDS", `<h3>Navigation</h3><ul>${["bio — View developer profile & background", "skills — Technical stack and expertise", "projects — Highlighted portfolio projects", "certs — Certifications & achievements", "contact — Contact & social links", "github — GitHub statistics", "history — Command history", "download cv — Download your CV", "clear — Clear terminal", "help — Show this help message"].map(cmd => `<li>${cmd}</li>`).join("")}</ul>`);
 }
 
 function historyOutput() {
   if (!commandHistory.length) return `<p class="response-muted">No command history yet. Start typing commands.</p>`;
-  return card("COMMAND HISTORY (LAST 20)", `<ol reversed>${commandHistory.slice(0, 20).map((command) => `<li>${escapeHtml(command)}</li>`).join("")}</ol><p>Total commands executed: ${commandHistory.length}</p>`, "pink");
+  return card("COMMAND HISTORY (LAST 20)", `<ol reversed>${commandHistory.slice(0, 20).map((command) => `<li>${escapeHtml(command)}</li>`).join("")}</ol><p>Total commands executed: ${commandHistory.length}</p>`);
 }
 
 async function github() {
   const response = await fetch("https://api.github.com/users/QMS85");
   if (!response.ok) throw new Error("Unable to fetch GitHub data.");
   const data = await response.json();
-  return card("GITHUB STATISTICS", `<p><strong>Username:</strong> ${link("https://github.com/QMS85", "@QMS85")}</p><div class="stats-grid"><div class="stat"><b>${data.public_repos}</b><span>Public repositories</span></div><div class="stat"><b>${data.followers}</b><span>Followers</span></div><div class="stat"><b>${data.following}</b><span>Following</span></div></div><p><strong>Public Gists:</strong> ${data.public_gists}</p><p><strong>Account Created:</strong> ${new Date(data.created_at).toLocaleDateString()}</p><p><strong>Last Updated:</strong> ${new Date(data.updated_at).toLocaleDateString()}</p>`);
+  return card("GITHUB STATISTICS", `<p><strong>Username:</strong> ${link("https://github.com/QMS85", "@QMS85")}</p><div class="stats-grid"><div class="stat"><b>${data.public_repos}</b><span>Public Repos</span></div><div class="stat"><b>${data.followers}</b><span>Followers</span></div><div class="stat"><b>${data.following}</b><span>Following</span></div></div>`);
 }
 
 function commandResponse(command) {
@@ -150,7 +165,7 @@ function commandResponse(command) {
     case "contact": return contact();
     case "github": return github();
     case "history": return historyOutput();
-    case "download cv": return card("CV DOWNLOAD", `<p><strong>Status:</strong> <span class="prompt-user">CV download ready.</span></p><p><a class="term-link" href="${cvUrl}" download>Download UpdatedCVOfJPeters.pdf ↓</a></p>`);
+    case "download cv": return card("CV DOWNLOAD", `<p><strong>Status:</strong> <span class="prompt-user">CV download ready.</span></p><p><a class="term-link" href="${cvUrl}" download>Download Updated CV</a></p>`);
     default: return null;
   }
 }
@@ -198,7 +213,7 @@ function updateLocalDateTime() {
   const resolved = Intl.DateTimeFormat().resolvedOptions();
   const formatted = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "medium" }).format(now);
   dateTime.textContent = formatted;
-  dateTime.dateTime = now.toISOString();
+  dateTime.setAttribute("datetime", now.toISOString()); // ✅ FIXED
   timezone.textContent = resolved.timeZone || "Local timezone";
   sessionTimezone.textContent = resolved.timeZone || "local timezone";
 }
@@ -209,6 +224,7 @@ function applyTheme() {
   themeLabel.textContent = isDarkMode ? "dark mode" : "light mode";
 }
 
+// Event Listeners
 document.querySelectorAll("[data-command]").forEach((button) => {
   button.addEventListener("click", () => { execute(button.dataset.command); input.focus(); });
 });
@@ -236,9 +252,19 @@ input.addEventListener("keydown", (event) => {
   }
 });
 
-document.getElementById("clearButton").addEventListener("click", () => { output.innerHTML = ""; input.focus(); });
-themeButton.addEventListener("click", () => { isDarkMode = !isDarkMode; writeStorage("isDarkMode", isDarkMode); applyTheme(); showToast(`${isDarkMode ? "Dark" : "Light"} mode activated`); });
+// Safe event listener attachment
+if (clearButton) {
+  clearButton.addEventListener("click", () => { output.innerHTML = ""; input.focus(); });
+}
 
+themeButton.addEventListener("click", () => { 
+  isDarkMode = !isDarkMode; 
+  writeStorage("isDarkMode", isDarkMode); 
+  applyTheme(); 
+  showToast(`${isDarkMode ? "Dark" : "Light"} mode activated`); 
+});
+
+// Initialize
 applyTheme();
 updateLocalDateTime();
 window.setInterval(updateLocalDateTime, 1000);
