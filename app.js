@@ -1,5 +1,5 @@
 /* CLI Terminal Portfolio — plain JavaScript */
-const cvUrl = "./UpdatedCVOfJPeters.pdf";
+const cvUrl = "UpdatedCVOfJPeters.pdf";
 const commandNames = ["help", "bio", "skills", "projects", "certs", "contact", "github", "history", "download cv", "clear"];
 const output = document.getElementById("terminalOutput");
 const input = document.getElementById("terminalInput");
@@ -51,12 +51,12 @@ function bio() {
     <p><strong>Experience:</strong> 4+ Years</p>
     <p><strong>Location:</strong> South Africa</p>
     <h3>About</h3>
-    <p>Passionate about building accessible, responsive, high-performance web interfaces. Specialized in converting designs to production-ready code with a focus on user experience and performance optimization.</p>
+    <p>Passionate About Building Accessible, Responsive, High-Performance Web Interfaces. Specialized In Converting Designs To Production-Ready Code With A Focus On User Experience And Performance Optimization.</p>
     <h3>Current Focus</h3>
-    <ul><li>Expanding expertise in full-stack development with Node.js</li><li>Learning TypeScript for type-safe JavaScript development</li><li>Building scalable web applications with modern tooling</li></ul>
+    <ul><li>Expanding Expertise In Full-Stack Development With Node.js</li><li>Learning TypeScript For Type-Safe JavaScript Development</li><li>Building Scalable Web Applications With Modern Tooling</li></ul>
     <h3>Contact</h3>
     <p>Email: ${link("mailto:jonathanpeters051@gmail.com", "jonathanpeters051@gmail.com")}</p>
-    <p>Professional profile: ${link("https://linkedin.com/in/2jonathanpeters", "LinkedIn")}</p>
+    <p>Professional Profile: ${link("https://linkedin.com/in/2jonathanpeters", "LinkedIn")}</p>
   `, "blue");
 }
 
@@ -64,10 +64,10 @@ function skills() {
   const groups = [
     ["Languages", "HTML5 · CSS3 · JavaScript (ES6+) · Python · TypeScript · jQuery"],
     ["Frameworks & Libraries", "React · Bootstrap · jQuery · SASS/SCSS"],
-    ["Tools & Platforms", "Git · GitHub · GitHub CLI · VS Code · Chrome DevTools · Figma"],
+    ["Tools & Platforms", "Git · GitHub · GitHub CLI · VS Code · Figma"],
     ["APIs & Services", "REST APIs · GitHub API · Weather API · Geolocation API"],
-    ["Back-End (Learning)", "Node.js · Express.js · MongoDB · Database Design"],
-    ["AI & Development Tools", "GitHub Copilot · ChatGPT · Google Gemini · Groq · Replit · Base44"],
+    ["Back-End (Still Learning)", "Node.js · Express.js · MongoDB · Database Design"],
+    ["AI Assistant Tools", "GitHub Copilot · ChatGPT · Google Gemini · Groq · Replit · Base44"],
     ["Deployment & Hosting", "GitHub Pages · Netlify · Vercel · Streamlit · Traditional Hosting"],
     ["Soft Skills", "Problem-solving · Communication · Attention to Detail · Collaborative Development · Self-Learning"]
   ];
@@ -107,7 +107,7 @@ function certs() {
     ["Front End Development Libraries", "https://www.freecodecamp.org/certification/Jonathan_Peters/front-end-development-libraries"],
     ["Data Visualization with D3.js", "https://www.freecodecamp.org/certification/Jonathan_Peters/data-visualization"]
   ];
-  return card("CERTIFICATIONS & ACHIEVEMENTS", `<p>All certifications from freeCodeCamp.</p>${certifications.map(([name, href]) => `<div class="cert-row"><span class="cert-mark">OK</span>${link(href, name)}</div>`).join("")}<h3>In Progress</h3><p><span class="cert-mark">..</span> Backend Development with Node.js & Express</p><p><span class="cert-mark">..</span> Relational Database Design</p><p><em>Continuous learning is key to staying current in tech.</em></p>`);
+  return card("CERTIFICATIONS & ACHIEVEMENTS", `<p>All Certifications From freeCodeCamp.</p>${certifications.map(([name, href]) => `<div class="cert-row"><span class="cert-mark">OK</span>${link(href, name)}</div>`).join("")}<h3>In Progress</h3><p><span class="cert-mark">..</span> Backend Development with Node.js & Express</p><p><span class="cert-mark">..</span> Relational Database Design</p><p><em>Continuous learning is key to staying current in tech.</em></p>`);
 }
 
 function contact() {
