@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>|>_Jonathan_Peters|>_v1.2_CLI_Terminal_Front_End_Web_Developer_Portfolio</title>
+    <meta
+      name="description"
+      content="Jonathan Peters' interactive CLI terminal portfolio. Explore skills, projects, certifications, and contact details."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta
+      property="og:title"
+      content="Jonathan Peters | CLI Terminal Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="An Interactive CLI Terminal Portfolio For Jonathan Peters, Front-End Web Developer."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="terminal-app">
+      <div class="terminal-shell">
+        <header class="window-bar">
+          <div class="window-dots" aria-label="Window controls">
+            <span class="window-dot red"></span>
+            <span class="window-dot yellow"></span>
+            <span class="window-dot green"></span>
+          </div>
+          <div class="window-title">
+            <span aria-hidden="true">>_</span> <strong>v1.2-cli-terminal</strong
+            ><span>/</span> Jonathan Peters
+          </div>
+          <div class="clock-stack">
+            <time
+              id="localDateTime"
+              datetime=""
+              aria-label="Your local date and time"
+              >Loading Local Date And Time...</time
+            >
+            <span id="localTimezone">Detecting Timezone...</span>
+          </div>
+        </header>
+
+        <div class="workspace">
+          <aside class="sidebar">
+            <div class="sidebar-header">
+              <div class="eyebrow">Command System</div>
+              <strong><span>user</span>@v1.2-cli-terminal</strong>
+            </div>
+
+            <nav class="command-nav" aria-label="Terminal commands">
+              <button class="command-button active" data-command="bio">
+                <span class="command-icon">usr</span><span>Bio</span>
+              </button>
+              <button class="command-button" data-command="skills">
+                <span class="command-icon">&lt;/&gt;</span><span>Skills</span>
+              </button>
+              <button class="command-button" data-command="projects">
+                <span class="command-icon">dir</span><span>Projects</span>
+              </button>
+              <button class="command-button" data-command="certs">
+                <span class="command-icon">crt</span><span>Certs</span>
+              </button>
+              <button class="command-button" data-command="contact">
+                <span class="command-icon">msg</span><span>Contact</span>
+              </button>
+              <button class="command-button" data-command="github">
+                <span class="command-icon">git</span><span>Github Stats</span>
+              </button>
+              <button class="command-button" data-command="help">
+                <span class="command-icon">???</span><span>Help</span>
+              </button>
+            </nav>
+
+            <div class="profile-card">
+              <div class="eyebrow">Profile Image</div>
+              <img
+                src="./profile-image.png"
+                alt="Jonathan Peters profile image"
+                class="profile-image"
+              />
+              <strong>Jonathan Peters</strong>
+              <span>Front-End Web Developer</span>
+              <small>Available For Opportunities</small>
+            </div>
+
+            <div class="sidebar-footer">
+              <button class="sidebar-action" id="clearButton">
+                <span aria-hidden="true">x</span> clear
+              </button>
+              <button class="sidebar-action" data-command="history">
+                <span aria-hidden="true">↶</span> history
+              </button>
+              <a class="sidebar-action" href="./UpdatedCVOfJPeters.pdf" download
+                ><span aria-hidden="true">↓</span> download CV</a
+              >
+              <button class="sidebar-action" id="themeButton">
+                <span aria-hidden="true" id="themeIcon">◐</span>
+                <span id="themeLabel">dark mode</span>
+              </button>
+            </div>
+          </aside>
+
+          <section
+            class="terminal-pane"
+            aria-label="Interactive terminal portfolio"
+          >
+            <div class="pane-meta">
+              <div class="status">
+                <span class="status-dot"></span> shell online
+              </div>
+              <div class="location">
+                Your local time ·
+                <span id="sessionTimezone">visitor session</span>
+              </div>
+            </div>
+
+            <div id="terminalOutput" class="terminal-output" aria-live="polite">
+              <div class="term-line">
+                <div class="prompt-line">
+                  <span class="prompt-user">system@v1.2-cli-terminal</span>:<span
+                    class="prompt-path"
+                    >~</span
+                  >$ init_portfolio --v1.2-cli-terminal-mode
+                </div>
+                <p class="response">
+                  [SYS_OK] Initializing Neural Shell for
+                  <strong>Jonathan Peters</strong>...<br />[SYS_OK] Front-End
+                  Web Developer | (4+ Years Exp)<br />[SYS_INFO] Type
+                  <span class="prompt-path">'help'</span> or click sidebar
+                  commands to navigate.
+                </p>
+              </div>
+              <div class="welcome term-line">
+                <h1>Welcome to v1.2 CLI Terminal... A  Website Portfolio For Jonathan Peters.</h1>
+                <p>
+                  <strong>Front-End Web Developer</strong> · 4+ Years Experience
+                  · South Africa
+                </p>
+                <p>
+                  Local date and time are shown above for your current location.
+                </p>
+                <p>
+                  Type <strong>'help'</strong> to see available commands, or use
+                  the command system.
+                </p>
+              </div>
+            </div>
+
+            <form id="terminalForm" class="terminal-form">
+              <label class="form-prompt" for="terminalInput"
+                >user@v1.2 CLI Terminal:~$</label
+              >
+              <input
+                id="terminalInput"
+                class="terminal-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Type a command (e.g. 'skills', 'projects')..."
+                autofocus
+              />
+            </form>
+            <div class="hint-row">
+              <span>shell accepts commands</span
+              ><span
+                ><kbd>↑</kbd> history <kbd>Tab</kbd> complete
+                <kbd>Enter</kbd> run</span
+              >
+            </div>
+          </section>
+        </div>
+      </div>
+      <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
