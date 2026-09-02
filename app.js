@@ -75,6 +75,11 @@ function skills() {
 }
 
 function projects() {
+  const portfolios = [
+    ["Front End Web Developer Portfolio", "Front End Web Developer Portfolio", "https://qms85.github.io/v1-CLI-Terminal-Portfolio/"],
+    ["v1 CLI Terminal Theme", "Front End Web Developer Portfolio", "https://qms85.github.io/v1-CLI-Terminal-Portfolio/"],
+    ["v1.2 CLI Terminal Theme", "Front End Web Developer Portfolio", "https://qms85.github.io/_v1.2-CLI-Terminal-Front-End-Web-Developer-Portfolio/"]
+  
   const featured = [
     ["Gem-Jumper", "Interactive Platform Game", "https://gem-jumper-f4f91f18.base44.app/"],
     ["Funky Snake Game", "Retro Style Game", "https://qms85.github.io/SnakeGame2025/"],
@@ -97,7 +102,7 @@ function projects() {
     ["Simple Calculator", "https://qms85.github.io/GitHubCalculator/"]
   ];
   const list = (items, start = 1, detailed = true) => `<ol class="project-list" start="${start}">${items.map(([name, description, href], index) => `<li><span class="project-number">${String(index + start).padStart(2, "0")}</span>${link(href, detailed && description ? `${name} — ${description}` : name)}</li>`).join("")}</ol>`;
-  return card("PORTFOLIO PROJECTS", `<h3>Featured Projects</h3>${list(featured)}<h3>Figma Design Implementation</h3>${list(figma, 5, false)}<h3>Additional Projects</h3>${list(additional, 11, false)}<p>${link("https://github.com/QMS85?tab=repositories", "View all repositories on GitHub")}</p>`, "pink");
+  return card("PORTFOLIO PROJECTS", `<h3>Portfolios'</h3>${list(portfolios)}<h3>Featured Projects</h3>${list(featured)}<h3>Figma Design Implementation</h3>${list(figma, 5, false)}<h3>Additional Projects</h3>${list(additional, 11, false)}<p>${link("https://github.com/QMS85?tab=repositories", "View all repositories on GitHub")}</p>`, "pink");
 }
 
 function certs() {
