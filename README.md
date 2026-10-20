@@ -60,7 +60,7 @@ _v1.2-CLI-Terminal-Front-End-Web-Developer-Portfolio/
 ├── style.css            # Complete styling (CSS variables, animations, responsive)
 ├── app.js               # JavaScript logic (command parsing, DOM manipulation)
 ├── jonathan1.png        # Profile image
-├── UpdatedCVOfJPeters.pdf # Downloadable CV
+├── Jonathan Peters CV.pdf # Downloadable CV
 ├── README.md            # This file
 └── .gitignore           # (Recommended) Exclude node_modules, etc.
 ```
