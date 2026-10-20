@@ -1,5 +1,5 @@
 /* CLI Terminal Portfolio — plain JavaScript */
-const cvUrl = "UpdatedCVOfJPeters.pdf";
+const cvUrl = "Jonathan Peters CV.pdf";
 const commandNames = ["help", "bio", "skills", "projects", "certs", "contact", "github", "history", "download cv", "clear"];
 
 // DOM Element Validation
